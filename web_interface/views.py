@@ -1,8 +1,8 @@
-
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render
 from pymongo import MongoClient
+from django.template.response import TemplateResponse
 import pprint
 
 databaseName = "test"
@@ -18,8 +18,4 @@ pprint.pprint(test)
 
 
 def home(request):
-    """ Exemple de page HTML, non valide pour que l'exemple soit concis """
-    text = test["last_name"]
-
-
-    return HttpResponse(text)
+    return TemplateResponse(request, 'index.html')
