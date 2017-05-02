@@ -7,7 +7,7 @@ import pprint
 
 databaseName = "test"
 
-client = MongoClient('192.168.255.128', 27017)
+client = MongoClient('192.168.32.128', 27017)
 
 db = client[databaseName]
 collection = db['csv']
@@ -19,3 +19,15 @@ pprint.pprint(test)
 
 def home(request):
     return TemplateResponse(request, 'index.html')
+
+def orders(request): #Rendering a speficic order
+    return TemplateResponse(request, 'orders.html')
+
+def clients(request): #Rendering a speficic order
+    return TemplateResponse(request, 'clients.html')
+
+def books(request): #Rendering a speficic order
+    return TemplateResponse(request, 'books.html')
+
+def stats(request): #Rendering a speficic order
+    return TemplateResponse(request, 'stats.html')

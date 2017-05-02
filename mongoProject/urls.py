@@ -18,5 +18,9 @@ from django.contrib import admin
 from web_interface.views import *
 
 urlpatterns =[
-    url(r'', home)
+    url(r'^$', home),
+    url(r'^orders',orders),
+    url(r'^clients',clients),
+    url(r'^books',books),
+    url(r'^stats',stats)
 ]
