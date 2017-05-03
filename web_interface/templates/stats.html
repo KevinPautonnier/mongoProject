@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 
-    {% for client in clients %}
-    <p>
-        {{ client.birth_date }}
-    </p>
+{{ stats }}
+<div>
+    {% for stat in stats %}
+        <p>
+            {{ stat.last_name}}
+        </p>
     {% endfor %}
-    <P>
-        {{ oldest.last_name }}
-    </P>
+</div>
 
 </body>
 </html>
