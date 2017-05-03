@@ -2,21 +2,10 @@ body {
     margin: 0px;
     font-family: Arial, sans-serif
 }
-
-.book {
-    display: inline-flex;
-    flex-direction: row;
-    width: 67.5%;
-    background-color: #efe7be;
-    margin: 8px;
-    padding: 4px;
+a{
+    text-decoration: none;
 }
 
-.info {
-    display: inline-flex;
-    flex-direction: column;
-    width: 33%;
-}
 
 .form {
     display: inline-flex;
@@ -92,30 +81,65 @@ form {
     width: 100%;
 }
 
-.info > img {
+
+.book {
+    display: inline-flex;
+    flex-direction: row;
+    width: 67.5%;
+    background-color: #efe7be;
+    margin: 8px;
+    padding: 4px;
+    align-items: center;
+}
+.info>img{
     width: 76px;
     height: 76px;
+    font-size: large;
+}
+.info {
+    display: inline-flex;
+    flex-direction: column;
+    width: 33%;
+    align-items: center;
+}
+.info:last-child{
+    align-items: flex-end;
+}
+.info:first-child{
+    align-items: flex-start;
 }
 
 header {
     background-color: #002635;
     color: #efe7be;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+}
+header a:visited{
+    color: #efe7be;
+}
+.menu {
+    width: 80%;
+    max-width: 80%;
+    text-align: right;
 }
 
-.menu {
-}
 
 .menu > ul {
     display: inline-flex;
     flex-direction: row;
 }
-
-.menu > ul > li {
+.menu>ul>li {
+    list-style-type: none;
     text-decoration: none;
 }
 
+
 .menu > ul > li > a {
     color: #efe7be;
+    margin-left: 8px;
 }
 
 #fond {

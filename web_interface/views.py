@@ -7,7 +7,7 @@ import pprint
 
 databaseName = "BooBook"
 
-client = MongoClient('192.168.32.130', 27017)
+client = MongoClient('192.168.182.128', 27017)
 
 db = client[databaseName]
 
