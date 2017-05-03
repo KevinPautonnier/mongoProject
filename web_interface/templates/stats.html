@@ -6,5 +6,14 @@
 </head>
 <body>
 
+    {% for client in clients %}
+    <p>
+        {{ client.birth_date }}
+    </p>
+    {% endfor %}
+    <P>
+        {{ oldest.last_name }}
+    </P>
+
 </body>
 </html>

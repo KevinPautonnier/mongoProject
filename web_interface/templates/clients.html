@@ -1,10 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
 
+{% include 'static/header.html' %}
+
+
+<div class="form-wrap">
+    <div class="form-container">
+        <div class="post-form">
+            <img src="{% static 'images/Icon_addclient.svg' %}">
+            <p>Ajouter un client</p>
+        </div>
+        <form method="post" action="">
+            <div class="form">
+                <div class="field">
+                    <label>Nom</label>
+                    <input name="lastname">
+                </div>
+                <div class="field">
+                    <label>Prénom</label>
+                    <input name="firstname">
+                </div>
+                <div class="field">
+                    <label>E-mail</label>
+                    <input name="email">
+                </div>
+            </div>
+            <div class="form">
+                <div class="field">
+                    <label>Date de naissance</label>
+                    <input name="birth_date">
+                </div>
+
+                <div class="info">
+                    <img src="{% static  'images/Icon_homme.svg'%}">
+
+                    <img src="{% static  'images/Icon_femme.svg'%}">
+                </div>
+
+                <div class="field">
+                    <button type="submit">Valider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div class="books">
+    {% for client in clients %}
+        <div class="book">
+        <div class="info">
+            <img src="{% static  'images/Icon2.svg'%}">
+        </div>
+            <div class="info">
+                <p>
+                    {{ client.last_name }}
+                </p>
+                <p>
+                    {{ client.first_name }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{client.birth_date}}
+                </p>
+                <p>
+                    {{ client.email }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{ client.registration_date }}
+                </p>
+            </div>
+        <div class="info">
+            <img src="{% static  'images/Icon3.svg'%}">
+        </div>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
