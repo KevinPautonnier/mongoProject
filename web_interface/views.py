@@ -8,7 +8,6 @@ import pprint
 import datetime
 import pytz
 
-
 databaseName = "BooBook"
 
 client = MongoClient('192.168.117.134', 27017)
@@ -43,7 +42,6 @@ def stats(request):  # Rendering a speficic order
     year40 = datetime.timedelta(days = -(40*365))
 
     vingt = (datetime.datetime.now(pytz.utc) + year20).isoformat()
-
     quarante = (datetime.datetime.now(pytz.utc) + year40).isoformat()
 
     print "20"
@@ -52,16 +50,28 @@ def stats(request):  # Rendering a speficic order
     print quarante
 
     client20to40 = clientsliste.find(
-        {'birth_date':{'$gt': (vingt), '$lt': (quarante)}}
+        {'birth_date':{'$gt': (quarante), '$lt': (vingt)}}
     )
 
+    """for i in client20to40:
+        print i["birth_date"]
+
+    #Nb adrese mail avec chiffres
+
+    emailnumber = clientsliste.find()
+    nbadresse = 0
+    for email in emailnumber :
+        #print email["email"]
+
+        if "0" in list(str(email["email"]))or "1" in list(str(email["email"]))or "2" in list(str(email["email"]))or "3" in list(str(email["email"]))or "4" in list(str(email["email"]))or"5" in list(str(email["email"]))or "6" in list(str(email["email"]))or "7" in list(str(email["email"]))or "8" in list(str(email["email"]))or "9" in list(str(email["email"])):
+            nbadresse += 1
+
+    print nbadresse
+
+    #Femme la plus agée
+
+    # oldestwomen = clientsliste.find( {'gender' : 'Female', }).sort({ "birth_date" : 1 }).limit(1)"""
+
+    return TemplateResponse(request, 'stats.html', {"stats": client20to40})
 
 
-    # Femme la plus agée
-
-    oldestwomen = clientsliste.find( {'gender' : 'Female', }).sort({ "birth_date" : 1 }).limit(1)
-
-
-
-
-    return TemplateResponse(request, 'stats.html', {"clients": client20to40}, {"oldest" : oldestwomen})
