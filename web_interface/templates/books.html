@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
 
+{% include 'static/header.html' %}
+
+
+<div class="form-wrap">
+    <div class="form-container">
+        <div class="post-form">
+            <img src="{% static 'images/Icon1.svg' %}">
+            <p>Ajouter un livre!</p>
+        </div>
+        <form method="post" action="">
+            <div class="form">
+                <div class="field">
+                    <label>Nom</label>
+                    <input name="name">
+                </div>
+                <div class="field">
+                    <label>Auteur</label>
+                    <input name="author_name">
+                </div>
+                <div class="field">
+                    <label>ISBN</label>
+                    <input name="isbn">
+                </div>
+            </div>
+            <div class="form">
+                <div class="field">
+                    <label>Date d'ajout</label>
+                    <input name="book_date_added">
+                </div>
+                <div class="field">
+                    <label>Prix</label>
+                    <input name="price">
+                </div>
+                <div class="field">
+                    <button type="submit">Valider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="books">
+    {% for book in books %}
+        <div class="book">
+        <div class="info">
+            <img src="{% static  'images/Icon2.svg'%}">
+        </div>
+            <div class="info">
+                <p>
+                    {{ book.name }}
+                </p>
+                <p>
+                    {{ book.author_name }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{ book.isbn }}
+                </p>
+                <p>
+                    {{ book.book_date_added }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{ book.price }}
+                </p>
+            </div>
+        <div class="info">
+            <img src="{% static  'images/Icon3.svg'%}">
+        </div>
+        </div>
+    {% endfor %}
+</div>
 </body>
 </html>
