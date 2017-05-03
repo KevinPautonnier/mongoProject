@@ -17,29 +17,29 @@
             <img src="{% static 'images/Icon1.svg' %}">
             <p>Ajouter un livre!</p>
         </div>
-        <form method="post" action="">
+        <form method="post" action="form/form.py">
             <div class="form">
                 <div class="field">
                     <label>Nom</label>
-                    <input name="name">
+                    <input name="name"  value="{{ name }}">
                 </div>
                 <div class="field">
                     <label>Auteur</label>
-                    <input name="author_name">
+                    <input name="author_name" value="{{ author_name }}">
                 </div>
                 <div class="field">
                     <label>ISBN</label>
-                    <input name="isbn">
+                    <input name="isbn" value="{{ isbn }}">
                 </div>
             </div>
             <div class="form">
                 <div class="field">
                     <label>Date d'ajout</label>
-                    <input name="book_date_added">
+                    <input name="book_date_added" value="{{ book_date_added }}">
                 </div>
                 <div class="field">
                     <label>Prix</label>
-                    <input name="price">
+                    <input name="price" value="{{ price }}">
                 </div>
                 <div class="field">
                     <button type="submit">Valider</button>
@@ -51,9 +51,9 @@
 <div class="books">
     {% for book in books %}
         <div class="book">
-        <div class="info">
-            <img src="{% static  'images/Icon2.svg'%}">
-        </div>
+            <div class="info">
+                <img src="{% static  'images/Icon2.svg' %}">
+            </div>
             <div class="info">
                 <p>
                     {{ book.name }}
@@ -75,9 +75,9 @@
                     {{ book.price }}
                 </p>
             </div>
-        <div class="info">
-            <img src="{% static  'images/Icon3.svg'%}">
-        </div>
+            <div class="info">
+                <img src="{% static  'images/Icon3.svg' %}">
+            </div>
         </div>
     {% endfor %}
 </div>
