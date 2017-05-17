@@ -6,11 +6,29 @@
 </head>
 <body>
 
-{{ stats }}
+
 <div>
+MAIL
+    {% for mail in mails %}
+        <p>
+            {{ mail.first_name }}
+            {{ mail.birth_date }}
+            {{ mail.gender }}
+        </p>
+    {% endfor %}
+FEMME
+    {% for femme in femmes %}
+        <p>
+            {{ femme.first_name }}
+            {{ femme.birth_date }}
+            {{ femme.gender }}
+        </p>
+    {% endfor %}
+STAT
     {% for stat in stats %}
         <p>
-            {{ stat.last_name}}
+            {{ stat.first_name }}
+            {{ stat.birth_date }}
         </p>
     {% endfor %}
 </div>
