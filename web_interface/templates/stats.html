@@ -1,40 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Statistiques</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
-
-
+{% include 'static/header.html' %}
 <div>
-FEMME LA PLUS AGEE
+<br>
+</div>
+<div class="form-wrap">
+{{ mails }} CLIENTS AVEC UN CHIFFRE DANS LEUR ADRESSE EMAIL
+</div>
+<div>
+<br>
+</div>
+<div class="form-wrap">
+CLIENTE LA PLUS AGEE
+</div>
+
+<div class="books">
     {% for femme in femmes %}
-        <p>
-            {{ femme.first_name }}
-            {{ femme.last_name }}
-            {{ femme.birth_date }}
-            {{ femme.gender }}
-        </p>
-    {% endfor %}
+        <div class="book">
+        <div class="info">
+            <img src="{% static  'images/Icon_femme.svg'%}">
+        </div>
+            <div class="info">
+                <p>
+                    {{ femme.last_name }}
+                </p>
+                <p>
+                    {{ femme.first_name }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{femme.birth_date}}
+                </p>
+                <p>
+                    {{ femme.email }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{ femme.registration_date }}
+                </p>
+            </div>
 
-CLIENTS AVEC UN CHIFFRE DANS LEUR ADRESSE EMAIL
-    {% for mail in mails %}
-        <p>
-            {{ mail.first_name }}
-            {{ mail.last_name }}
-            {{ mail.email }}
-        </p>
+        </div>
     {% endfor %}
+</div>
 
-CLIENT HOMME ENTRE 20 et 40 ans
-    {% for stat in stats %}
-        <p>
-            {{ stat.first_name }}
-            {{ stat.last_name }}
-            {{ stat.birth_date }}
-            {{ stat.gender }}
-        </p>
+
+<div class="form-wrap">
+CLIENT HOMME ENTRE 20 ET 40 ANS AYANT PASSE UNE COMMANDE
+</div>
+<div class="books">
+    {% for men in mens %}
+        <div class="book">
+        <div class="info">
+            <img src="{% static  'images/Icon_homme.svg'%}">
+        </div>
+            <div class="info">
+                <p>
+                    {{ men.last_name }}
+                </p>
+                <p>
+                    {{ men.first_name }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{men.birth_date}}
+                </p>
+                <p>
+                    {{ men.email }}
+                </p>
+            </div>
+            <div class="info">
+                <p>
+                    {{ men.registration_date }}
+                </p>
+            </div>
+
+        </div>
     {% endfor %}
 </div>
 

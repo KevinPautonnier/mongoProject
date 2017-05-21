@@ -3,7 +3,7 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Clients</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
@@ -58,7 +58,11 @@
     {% for client in clients %}
         <div class="book">
         <div class="info">
-            <img src="{% static  'images/Icon2.svg'%}">
+            {% if client.gender == "Male"%}
+                <img src="{% static  'images/Icon_homme.svg'%}">
+            {% else %}
+                <img src="{% static  'images/Icon_femme.svg'%}">
+            {% endif %}
         </div>
             <div class="info">
                 <p>
