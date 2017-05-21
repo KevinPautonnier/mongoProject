@@ -22,5 +22,6 @@ urlpatterns =[
     url(r'^orders',orders),
     url(r'^clients',clients),
     url(r'^books',books),
-    url(r'^stats',stats)
+    url(r'^stats',stats),
+    url(r'^book/edit', edit_book)
 ]

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+{% load getid %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+{% include 'static/header.html' %}
+
+<div class="form-wrap">
+    <div class="form-container">
+        <div class="post-form">
+            <img src="{% static 'images/Icon1.svg' %}">
+            <p>Modifier un livre!</p>
+        </div>
+        <form method="post" action="/books">
+            {% csrf_token %}
+            <div class="form">
+                <input type="hidden" name="action" value='edit'>
+                <input type="hidden" name="id" value={{ book|mongo_id }}>
+                <div class="field">
+                    <label>Nom</label>
+                    <input name="name" value="{{ book.name }}">
+                </div>
+                <div class="field">
+                    <label>Auteur</label>
+                    <input name="author_name" value="{{ book.author_name }}">
+                </div>
+                <div class="field">
+                    <label>ISBN</label>
+                    <input name="isbn" value="{{ book.isbn }}">
+                </div>
+            </div>
+            <div class="form">
+                <div class="field">
+                    <label>Date d'ajout</label>
+                    <input name="book_date_added" value="{{ book.book_date_added }}">
+                </div>
+                <div class="field">
+                    <label>Prix</label>
+                    <input name="price" value="{{ book.price }}">
+                </div>
+                <div class="field">
+                    <button type="submit">Valider</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

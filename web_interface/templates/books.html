@@ -55,7 +55,14 @@
     {% for book in books %}
         <div class="book">
             <div class="info">
-                <img src="{% static  'images/Icon2.svg' %}">
+                <form method="post" action="/book/edit">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="edit">
+                    <input type="hidden" name="id" value="{{ book|mongo_id}}">
+                    <button type="submit">
+                        <img src="{% static  'images/Icon2.svg' %}">
+                    </button>
+                </form>
             </div>
             <div class="info">
                 <p>
