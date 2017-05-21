@@ -29,8 +29,52 @@ def orders(request):  # Rendering a speficic order
 
 def clients(request):  # Rendering a speficic order
 
+    if request.method == 'POST':
+        form = request.POST
+        if form['action'] == 'put':
+            clientsliste.insert({
+                'gender': 'Male',
+                'first_name': form['first_name'],
+                'last_name': form['last_name'],
+                'registration_date': datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ'),
+                'email': form['email'],
+                'birth-date': form['birth_date']
+        })
+        elif form['action'] == 'delete':
+            clientsliste.delete_one(
+                {
+                    '_id': ObjectId(form['id'])
+                }
+            )
+        elif form['action'] == 'edit':
+            clientsliste.update(
+                {"_id": ObjectId(form['id'])},
+                {
+                    "$set": {
+                        'gender': 'Male',
+                        'first_name': form['first_name'],
+                        'last_name': form['last_name'],
+                        'email': form['email'],
+                        'birth-date': form['birth_date']
+                    }
+                }
+            )
+
     clientrequest = clientsliste.find()
     return TemplateResponse(request, 'clients.html', {"clients": clientrequest})
+
+
+def edit_client(request):
+
+    form = request.POST
+
+    client = clientsliste.find_one({
+        '_id':  ObjectId(form['id'])
+    })
+
+    print client
+
+    return TemplateResponse(request, 'form/edit_client.html', {"client": client})
 
 
 def books(request):
