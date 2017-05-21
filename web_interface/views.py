@@ -47,16 +47,42 @@ def books(request):
                 'price': form['price']
         })
         elif form['action'] == 'delete':
-            print 'delete'
-            print ObjectId(form['id'])
             collection.delete_one(
                 {
                     '_id': ObjectId(form['id'])
                 }
             )
+        elif form['action'] == 'edit':
+            collection.update(
+                {"_id": ObjectId(form['id'])},
+                {
+                    "$set": {
+                        'name': form['name'],
+                        'author_name': form['author_name'],
+                        'book_date_added': form['book_date_added'],
+                        'isbn': form['isbn'],
+                        'price': form['price']
+                    }
+                }
+            )
 
     test = collection.find()
     return TemplateResponse(request, 'books.html', {"books": test})
+
+
+def edit_book(request):
+
+    form = request.POST
+
+    print form['id']
+
+    book = collection.find_one({
+        '_id':  ObjectId(form['id'])
+    })
+
+    print book['name']
+
+    return TemplateResponse(request, 'form/edit_book.html', {"book": book})
 
 
 def stats(request):  # Rendering a speficic order

@@ -3,4 +3,4 @@ register = template.Library()
 
 @register.filter("mongo_id")
 def mongo_id(value):
-    return str(value['_id'])
+    return value['_id']
