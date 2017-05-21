@@ -91,10 +91,18 @@ form {
     padding: 4px;
     align-items: center;
 }
+.info>form{
+    background-color: transparent;
+}
+.info>form>button{
+    border: none;
+    background-color: transparent;
+    min-width: 77px;
+    width: 6vw;
+}
 .info>img{
-    width: 76px;
-    height: 76px;
-    font-size: large;
+    min-width: 77px;
+    width: 6vw;
 }
 .info {
     display: inline-flex;
