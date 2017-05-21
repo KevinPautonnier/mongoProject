@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 {% load static %}
+{% load getid %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -17,11 +18,13 @@
             <img src="{% static 'images/Icon1.svg' %}">
             <p>Ajouter un livre!</p>
         </div>
-        <form method="post" action="form/form.py">
+        <form method="post" action="">
+            {% csrf_token %}
             <div class="form">
+                <input type="hidden" name="action" value="put">
                 <div class="field">
                     <label>Nom</label>
-                    <input name="name"  value="{{ name }}">
+                    <input name="name" value="{{ name }}">
                 </div>
                 <div class="field">
                     <label>Auteur</label>
@@ -76,7 +79,14 @@
                 </p>
             </div>
             <div class="info">
-                <img src="{% static  'images/Icon3.svg' %}">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="id" value="{{ book|mongo_id}}">
+                    <button type="submit">
+                        <img src="{% static  'images/Icon3.svg' %}">
+                    </button>
+                </form>
             </div>
         </div>
     {% endfor %}
