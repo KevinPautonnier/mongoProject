@@ -8,27 +8,32 @@
 
 
 <div>
-MAIL
-    {% for mail in mails %}
-        <p>
-            {{ mail.first_name }}
-            {{ mail.birth_date }}
-            {{ mail.gender }}
-        </p>
-    {% endfor %}
-FEMME
+FEMME LA PLUS AGEE
     {% for femme in femmes %}
         <p>
             {{ femme.first_name }}
+            {{ femme.last_name }}
             {{ femme.birth_date }}
             {{ femme.gender }}
         </p>
     {% endfor %}
-STAT
+
+CLIENTS AVEC UN CHIFFRE DANS LEUR ADRESSE EMAIL
+    {% for mail in mails %}
+        <p>
+            {{ mail.first_name }}
+            {{ mail.last_name }}
+            {{ mail.email }}
+        </p>
+    {% endfor %}
+
+CLIENT HOMME ENTRE 20 et 40 ans
     {% for stat in stats %}
         <p>
             {{ stat.first_name }}
+            {{ stat.last_name }}
             {{ stat.birth_date }}
+            {{ stat.gender }}
         </p>
     {% endfor %}
 </div>

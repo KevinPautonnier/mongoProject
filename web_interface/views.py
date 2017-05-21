@@ -50,11 +50,13 @@ def stats(request):  # Rendering a speficic order
 
     mailnumber = clientsliste.find()
     test = 0
+    liste = []
     print type(mailnumber)
     for mail in mailnumber:
         if '0' in str(mail["email"]) or '1' in str(mail["email"]) or '2' in str(mail["email"]) or '3' in str(mail["email"]) or '4' in str(mail["email"]) or '5' in str(mail["email"]) or '6' in str(mail["email"]) or '7' in str(mail["email"]) or '8' in str(mail["email"]) or '9' in str(mail["email"]):
             test = test + 1
+            liste.append(mail)
         else:
             print mail["email"]
     print test
-    return TemplateResponse(request, 'stats.html', {"femmes": oldestwomen, "stats": client20to40, "mails": mailnumber})
+    return TemplateResponse(request, 'stats.html', {"femmes": oldestwomen, "stats": client20to40, "mails": liste})
