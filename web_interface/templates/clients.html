@@ -4,7 +4,7 @@
 {% load getid %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Clients</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 </head>
 <body>
@@ -66,7 +66,11 @@
                     <input type="hidden" name="action" value="edit">
                     <input type="hidden" name="id" value="{{ client|mongo_id}}">
                     <button type="submit">
-                        <img src="{% static  'images/Icon2.svg' %}">
+                        {% if client.gender == "Male"%}
+                            <img src="{% static  'images/Icon_homme.svg'%}">
+                        {% else %}
+                            <img src="{% static  'images/Icon_femme.svg'%}">
+                        {% endif %}
                     </button>
                 </form>
             </div>

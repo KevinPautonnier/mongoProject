@@ -144,25 +144,18 @@ def stats(request):  # Rendering a speficic order
     print "40"
     print quarante
 
-    client20to40 = clientsliste.find(
-        {'birth_date':{'$gt': (vingt), '$lt': (quarante)}}
-    )
+    clientaged = clientsliste.find({'birth_date': {'$gt': (quarante), '$lt': (vingt)}})
 
 
-
-    #Femme la plus agée
 
     oldestwomen = clientsliste.find({'gender': 'Female'}).sort('birth_date', pymongo.ASCENDING).limit(1)
 
     mailnumber = clientsliste.find()
-    test = 0
-    liste = []
-    print type(mailnumber)
+
+    listemail = 0
+
     for mail in mailnumber:
         if '0' in str(mail["email"]) or '1' in str(mail["email"]) or '2' in str(mail["email"]) or '3' in str(mail["email"]) or '4' in str(mail["email"]) or '5' in str(mail["email"]) or '6' in str(mail["email"]) or '7' in str(mail["email"]) or '8' in str(mail["email"]) or '9' in str(mail["email"]):
-            test = test + 1
-            liste.append(mail)
-        else:
-            print mail["email"]
-    print test
-    return TemplateResponse(request, 'stats.html', {"femmes": oldestwomen, "stats": client20to40, "mails": liste})
+            listemail = listemail +1
+
+    return TemplateResponse(request, 'stats.html', {"mens": clientaged, "femmes": oldestwomen, "mails": listemail})
